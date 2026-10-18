@@ -115,7 +115,7 @@ La estrategia incluye:
 - *One-Hot Encoding* para `LOC_OF_OCCUR_DESC`;
 - conservación de las 20 categorías más frecuentes de `PREM_TYP_DESC`, agrupando las restantes como `OTRO`, seguida de *One-Hot Encoding*.
 
-El preprocesamiento produce **43 features finales**.
+El preprocesamiento produce 43 features finales.
 
 **Baselines**
 
