@@ -152,7 +152,7 @@ Como métricas complementarias se utilizan:
 - ROC-AUC multiclase One-vs-Rest;
 - log-loss.
 
-La selección se realiza sobre una muestra estratificada de 50.000 observaciones de train, mediante validación cruzada estratificada de **3 folds**. El conjunto de test permanece cerrado hasta finalizar la selección.
+La selección se realiza sobre una muestra estratificada de 50.000 observaciones de train, mediante validación cruzada estratificada de 3 folds. El conjunto de test permanece cerrado hasta finalizar la selección.
 
 Resultados principales de validación cruzada:
 
