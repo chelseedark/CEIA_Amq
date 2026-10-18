@@ -18,7 +18,7 @@ La pregunta central es:
 
 Se utiliza **NYPD Complaint Data Current (Year To Date)**, publicado por NYC Open Data y provisto por el New York City Police Department (NYPD), con identificador `5uac-w243`.
 
-El período de estudio comprende denuncias reportadas entre el **01/01/2026 y el 30/06/2026**. El snapshot utilizado contiene **279.513 registros y 36 variables**.
+El período de estudio comprende denuncias reportadas entre el  01/01/2026 y el 30/06/2026. El snapshot utilizado contiene 279.513 registros y 36 variables.
 
 Fuente oficial:
 
@@ -96,7 +96,7 @@ JURIS_DESC
 
 Se excluyen además atributos sensibles de víctima y sospechoso.
 
-Después de la limpieza determinística se conservaron **279.495 observaciones** para modelado. La partición estratificada quedó formada por:
+Después de la limpieza determinística se conservaron 279.495 observaciones para modelado. La partición estratificada quedó formada por:
 
 - **Train:** 223.596 observaciones.
 - **Test:** 55.899 observaciones.
@@ -142,7 +142,7 @@ KNN, SVM con kernel, clustering, PCA y XGBoost fueron considerados, pero no form
 
 **Métrica principal y validación**
 
-La métrica principal es **F1 macro**, porque las tres categorías tienen importancia conceptual y la distribución de clases no es uniforme.
+La métrica principal es F1 macro, porque las tres categorías tienen importancia conceptual y la distribución de clases no es uniforme.
 
 Como métricas complementarias se utilizan:
 
@@ -152,7 +152,7 @@ Como métricas complementarias se utilizan:
 - ROC-AUC multiclase One-vs-Rest;
 - log-loss.
 
-La selección se realiza sobre una muestra estratificada de **50.000 observaciones de train**, mediante validación cruzada estratificada de **3 folds**. El conjunto de test permanece cerrado hasta finalizar la selección.
+La selección se realiza sobre una muestra estratificada de 50.000 observaciones de train, mediante validación cruzada estratificada de **3 folds**. El conjunto de test permanece cerrado hasta finalizar la selección.
 
 Resultados principales de validación cruzada:
 
@@ -180,11 +180,11 @@ Esto muestra el trade-off entre maximizar el porcentaje global de aciertos y rep
 
 **Ajuste de hiperparámetros y selección final**
 
-La mejor familia antes del tuning fue **Random Forest**.
+La mejor familia antes del tuning fue Random Forest.
 
-Se realizó una búsqueda aleatoria acotada de hiperparámetros. La mejora obtenida fue de aproximadamente **dos milésimas de F1 macro**, por lo que se comparó esa ganancia con la variabilidad entre folds.
+Se realizó una búsqueda aleatoria acotada de hiperparámetros. La mejora obtenida fue de aproximadamente dos milésimas de F1 macro, por lo que se comparó esa ganancia con la variabilidad entre folds.
 
-Luego se aplicó una regla de **un error estándar (1-SE)**. Tanto el Random Forest base como la versión ajustada quedaron dentro del umbral y se seleccionó el modelo base por parsimonia.
+Luego se aplicó una regla de un error estándar (1-SE). Tanto el Random Forest base como la versión ajustada quedaron dentro del umbral y se seleccionó el modelo base por parsimonia.
 
 **Modelo final: `Random_Forest`**
 
@@ -245,7 +245,7 @@ Estas métricas evalúan capacidad de discriminación, no calibración de probab
 
 **Incertidumbre**
 
-Se aplicó bootstrap sobre el conjunto de test con **1.000 remuestreos**.
+Se aplicó bootstrap sobre el conjunto de test con 1.000 remuestreos.
 
 - F1 macro: **0,4741**
 - IC bootstrap 95 %: **[0,4699; 0,4783]**
@@ -277,7 +277,7 @@ Los resultados respaldan las tres hipótesis planteadas en la notebook:
 - los modelos capaces de representar relaciones no lineales aportan información frente a la referencia lineal;
 - una mayor complejidad o un tuning adicional no garantiza una mejora sustantiva.
 
-El resultado principal no es que pueda predecirse la severidad legal con alta precisión. La conclusión es más acotada: **una vez eliminadas las variables que contienen información directa sobre el delito, todavía permanece señal predictiva en el contexto, pero su capacidad discriminativa es limitada**.
+El resultado principal no es que pueda predecirse la severidad legal con alta precisión. La conclusión es más acotada: una vez eliminadas las variables que contienen información directa sobre el delito, todavía permanece señal predictiva en el contexto, pero su capacidad discriminativa es limitada.
 
 El trabajo muestra también que una evaluación defendible requiere controlar *data leakage*, comparar contra baselines, mantener test cerrado durante la selección, estudiar el desbalance de clases y reportar tanto las mejoras como sus costos.
 
